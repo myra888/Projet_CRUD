@@ -26,7 +26,7 @@
         if (!isset($_SESSION['admin_id'])) {
             header("Location: connexion.php"); 
             exit();
-        }
+        } 
 
         $host = "localhost";
         $user = "root";
@@ -53,14 +53,14 @@
             <th>Login</th>
             <th>Actions</th>
         </tr>
+ 
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
-                <td><?= ($row['id']); ?></td>
-                <td><?= ($row['nom']); ?></td>
-                <td><?= ($row['prenom']); ?></td>
-                <td><?= ($row['login']); ?></td>
+                <td><?= $row['id'] ?></td>
+                <td><?= $row['nom'] ?></td>
+                <td><?= $row['prenom'] ?></td>
+                <td><?= $row['login'] ?></td>
                 <td><a href="voir.php?id=<?= $row['id'] ?>">Voir</a> <a href="update.php?id=<?= $row['id'] ?>">Modifier</a> <a href="delete.php?id=<?= $row['id'] ?>">Supprimer</a></td>
-
             </tr>
 
             <?php

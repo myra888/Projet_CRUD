@@ -46,16 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = mysqli_fetch_assoc($result);
         
         if ($row['password'] === $password) { 
-
             $_SESSION['admin_id'] = $row['id'];
-            $_SESSION['login'] = $row['login'];
-
             header("Location: user.php");
             exit();
         }     
     }
     else {
-        $error_message = "Login ou mot de passe incorrect";
+        $erreur = "Login ou mot de passe incorrect";
     }
 
     mysqli_close($conn);
@@ -66,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2 style="color: #fff;">Connexion</h2>
         
         <?php 
-            if (isset($error_message)) {
-                $error_message;  
+            if (isset($erreur)) {
+                $erreur;  
             } 
         ?>
-        
+
         <form method="POST">
             <label for="login">Login :</label>
             <input type="text" id="login" name="login">
